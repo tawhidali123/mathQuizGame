@@ -102,10 +102,9 @@ export default function Main() {
         </div>
         {/* END TITLE SECTION */}
 
-        <div>
+        <Grid>
             <GameContainer/>
-        </div>
-        
+
 
       </main>
     
