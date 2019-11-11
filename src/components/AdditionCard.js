@@ -6,7 +6,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+// import CardMedia from '@material-ui/core/CardMedia';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 // import Toolbar from '@material-ui/core/Toolbar';
@@ -103,26 +103,23 @@ export default class AdditionCard extends React.Component {
             
                 <Grid item key="1" xs={12} sm={6} md={4}>
                 <Card className="cardclassName">
-                    <CardMedia
-                    className="cardMediaclassname"
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                    />
+
                     <CardContent className="cardContentclassName">
-                    <Typography gutterBottom variant="h5" component="h2">
-                    <h1>{this.state.a} + {this.state.b}</h1>
-                    </Typography>
+                        <Typography gutterBottom variant="h5" component="h2">
+                        <h1>{this.state.a} + {this.state.b}</h1>
+                        </Typography>
                     </CardContent>
+                    
                     <CardActions>
                         <Typography>
-                        <input 
-                            type="text"
-                            onChange= {this.handleChange}
-                            onKeyPress= {this.keyPress}
+                            <input 
+                                type="text"
+                                onChange= {this.handleChange}
+                                onKeyPress= {this.keyPress}
                             />
-                            </Typography>
-                      
+                        </Typography>       
                     </CardActions>
+
                 </Card>
                 </Grid>
           
