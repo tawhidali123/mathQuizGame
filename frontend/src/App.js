@@ -6,17 +6,27 @@ import { Switch, Route } from 'react-router-dom';
 
 import Main from './components/Main'
 import Login from './login/Login'
+import Register from './login/Register'
+import GameContainer from './components/GameContainer';
+import UserUpdate from './login/UserUpdate'
 
-function App() {
+export default class App extends React.Component {
+  state= {
+    userObj: {}
+  }
+
+  render(){
   return (
     <div className="App">
     <Switch>
       <Route exact path="/" component={Login} />
+      <Route path="/register" component={Register} />
       <Route path="/main" component={Main} /> 
+      <Route path="/play" component={GameContainer} />
+      <Route path="/edituser" component={UserUpdate} />
     </Switch>
 
     </div>
   );
 }
-
-export default App;
+}

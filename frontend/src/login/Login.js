@@ -19,7 +19,7 @@ export default class Login extends React.Component {
     user_id: 0
   }
 
-<<<<<<< HEAD:frontend/src/login/Login.js
+
   onChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
@@ -27,12 +27,6 @@ export default class Login extends React.Component {
   
 }
 
-=======
-export default function Login() {
-  const classes = useStyles();
->>>>>>> tawhid:frontend/src/login/Login.js
-
- 
   render(){
   return (
     <div>

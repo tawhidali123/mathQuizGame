@@ -113,13 +113,6 @@ export default function Main(props) {
         </div>
         {/* END TITLE SECTION */}
 
-        {/* <Grid>
-            <GameContainer/>
-<<<<<<< HEAD:frontend/src/components/Main.js
-        </Grid> */}
-=======
-        </Grid>
->>>>>>> tawhid:frontend/src/components/Main.js
 
       </main>
     
