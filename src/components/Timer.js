@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 // const DEFAULT_STATE = {
 //     counter: 60
 // }
-
+let interval;
 export default class Timer extends Component {
 
     state = {
@@ -27,26 +27,32 @@ export default class Timer extends Component {
     //     this.startTimer()
     // }
 
-
-    timer = ()=> {
-        let num = this.state.counter
-        let newNum = num - 1
-        setInterval(function(){
-           return newNum
-        }, 1000)
-        this.setState({counter: newNum})
-       
+    countDown = () => {
+        this.setState({counter: this.state.counter-1})
     }
     
-   
+    
     componentDidMount(){
-        this.timer()
+        interval =  setInterval(() => {
+            this.countDown();
+            console.log(this.state.counter);
+          }, 1000);
     }
+
+    componentDidUpdate(){
+        if(this.state.counter === 0)  {
+            clearInterval(interval)
+        } 
+    }
+
+
 
        
 
 
     render() {
+     
+
         return (
             <div>
                <h1>

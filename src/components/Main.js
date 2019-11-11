@@ -103,9 +103,9 @@ export default function Main() {
         </div>
         {/* END TITLE SECTION */}
 
-        <div>
+        <Grid>
             <GameContainer/>
-        </div>
+        </Grid>
         {/* CARDS */}
         {/* <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>

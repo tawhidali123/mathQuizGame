@@ -16,15 +16,15 @@ import Container from '@material-ui/core/Container';
 // import Link from '@material-ui/core/Link';
 
 const DEFAULT_STATE= {
-    sum: 0,
+    total: 0,
     userInput: 0,
     a: 0,
     b: 0,
-    point: 1
+    point: 2
 }
 
 
-export default class AdditionCard extends React.Component {
+export default class MultiplicationCard extends React.Component {
 
    state ={...DEFAULT_STATE}
 
@@ -40,15 +40,15 @@ export default class AdditionCard extends React.Component {
     // }
     mathProblem = () => {
     let random = () => {   
-        return Math.round(Math.random()* 100) 
+        return Math.round(Math.random()* 10)+1 
     }
 
     let a = random()
     let b = random()
-    let newSum = a + b
+    let total = a * b
 
     this.setState({
-        sum: newSum,
+        total: total,
         a: a,
         b: b
     })
@@ -80,7 +80,7 @@ export default class AdditionCard extends React.Component {
     }
 
     keyPress = (event) => {
-        if (event.key === "Enter" && this.state.userInput == this.state.sum){
+        if (event.key === "Enter" && this.state.userInput == this.state.total){
             this.mathProblem()
             this.props.correct(this.state.point)
             event.target.value = ""
@@ -105,7 +105,7 @@ export default class AdditionCard extends React.Component {
                 <Card className="cardclassName">
                     <CardContent className="cardContentclassName">
                     <Typography gutterBottom variant="h5" component="h2">
-                    <h1>{this.state.a} + {this.state.b}</h1>
+                    <h1>{this.state.a} * {this.state.b}</h1>
                     </Typography>
                     </CardContent>
                     <CardActions>

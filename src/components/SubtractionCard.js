@@ -16,7 +16,7 @@ import Container from '@material-ui/core/Container';
 // import Link from '@material-ui/core/Link';
 
 const DEFAULT_STATE= {
-    sum: 0,
+    difference: 0,
     userInput: 0,
     a: 0,
     b: 0,
@@ -24,7 +24,7 @@ const DEFAULT_STATE= {
 }
 
 
-export default class AdditionCard extends React.Component {
+export default class MultiplicationCard extends React.Component {
 
    state ={...DEFAULT_STATE}
 
@@ -40,15 +40,21 @@ export default class AdditionCard extends React.Component {
     // }
     mathProblem = () => {
     let random = () => {   
-        return Math.round(Math.random()* 100) 
+        return Math.round(Math.random()* 100)
     }
 
     let a = random()
     let b = random()
-    let newSum = a + b
+    let difference
+    if(a >= b){
+        difference = a - b
+    } else if(a < b){
+        difference = b - a
+    }
+    
 
     this.setState({
-        sum: newSum,
+        difference: difference,
         a: a,
         b: b
     })
@@ -80,7 +86,7 @@ export default class AdditionCard extends React.Component {
     }
 
     keyPress = (event) => {
-        if (event.key === "Enter" && this.state.userInput == this.state.sum){
+        if (event.key === "Enter" && this.state.userInput == this.state.difference){
             this.mathProblem()
             this.props.correct(this.state.point)
             event.target.value = ""
@@ -90,7 +96,14 @@ export default class AdditionCard extends React.Component {
             console.log(typeof this.state.userInput)
         }
     }
-   
+    
+    showProblem = () => {
+        if(this.state.a >= this.state.b){
+          return `${this.state.a} - ${this.state.b}`
+        } else if(this.state.a < this.state.b){
+            return `${this.state.b} - ${this.state.a}`
+        }
+    }
     
 
      render(){
@@ -105,7 +118,7 @@ export default class AdditionCard extends React.Component {
                 <Card className="cardclassName">
                     <CardContent className="cardContentclassName">
                     <Typography gutterBottom variant="h5" component="h2">
-                    <h1>{this.state.a} + {this.state.b}</h1>
+                    <h1>{this.showProblem()}</h1>
                     </Typography>
                     </CardContent>
                     <CardActions>
