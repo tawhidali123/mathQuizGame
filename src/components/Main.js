@@ -52,7 +52,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3];
 
 export default function Main() {
   const classes = useStyles();
@@ -105,37 +104,7 @@ export default function Main() {
 
         <Grid>
             <GameContainer/>
-        </Grid>
-        {/* CARDS */}
-        {/* <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
-            {cards.map(card => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Math Problem
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container> */}
-        {/* END CARDS */}
+
 
       </main>
     
