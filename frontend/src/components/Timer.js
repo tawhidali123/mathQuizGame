@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
+import { Redirect } from 'react-router-dom';
 
 // const DEFAULT_STATE = {
 //     counter: 60
@@ -8,7 +9,8 @@ let interval;
 export default class Timer extends Component {
 
     state = {
-        counter: null
+        counter: null,
+        toMain: false
     }
     
 
@@ -44,15 +46,17 @@ export default class Timer extends Component {
   
       
     componentDidUpdate(){
-        if(this.state.counter === 0)  {
-            this.props.done()
-            clearInterval(interval)
-
-            
-        } 
+        
     }
     
     render() {
+        if(this.state.counter === 0)  {
+            this.props.done()
+            clearInterval(interval)
+            return <Redirect to='/main' />
+
+            
+        } 
      
 
         return (

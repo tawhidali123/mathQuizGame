@@ -16,7 +16,7 @@ export default class Login extends React.Component {
   state={
     username: "",
     password: "",
-    user_id: 0
+    
   }
 
 
@@ -27,6 +27,15 @@ export default class Login extends React.Component {
   
 }
 
+handleSubmit = (event) => {
+  event.preventDefault()
+  fetch('http://localhost:3000/users')
+  .then(resp => resp.json())
+  .then(user => {
+    
+  })
+}
+
   render(){
   return (
     <div>
@@ -34,7 +43,7 @@ export default class Login extends React.Component {
             <Paper>
                 <Typography>LOGIN</Typography>
                 <br></br>
-                <form onSubmit={console.log()}>
+                <form onSubmit={this.handleSubmit}>
                 <TextField 
                 label="Username" 
                 name="username"

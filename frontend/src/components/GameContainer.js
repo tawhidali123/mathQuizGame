@@ -28,12 +28,32 @@ export default class GameContainer extends Component {
     }
 
     isTimerDone = () => {
-        
+        fetch('http://localhost:3000/scores', {
+            method: 'POST',
+            body: JSON.stringify({
+             user_id: this.props.userObj.id,
+             points: this.state.points,
+             difficulty_id: 1
+            }),
+
+            headers: {
+              'Content-Type':'application/json',
+              'Accept': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
     }
 
+    // componentDidMount(){
+    //     fetch('http://localhost:3000/difficulties')
+    //     .then(resp => resp.json())
+    //     .then(difficulty => {
+    //         this.setState({time: difficulty.time})
+    //     })
+    // }
 
     render() {
-        
+        console.log(this.props.userObj)
         return (
             <Grid justify="center">
             <Timer time={this.state.time} done={this.isTimerDone}/>
