@@ -18,7 +18,7 @@ export default class Register extends React.Component {
         username: "",
         password: "",
         phrase: "",
-        userObj: {}
+       
       }
     
       onChange = (event) => {
@@ -45,7 +45,9 @@ export default class Register extends React.Component {
         })
         .then(resp => resp.json())
         .then(user => {
-
+            console.log(user)
+            this.props.getUserObj(user)
+            this.props.history.push('/main')
         })
         
     }

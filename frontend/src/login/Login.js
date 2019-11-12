@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography';
+import { Redirect } from 'react-router-dom';
 // import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
@@ -16,7 +17,7 @@ export default class Login extends React.Component {
   state={
     username: "",
     password: "",
-    user_id: 0
+    
   }
 
 
@@ -27,14 +28,29 @@ export default class Login extends React.Component {
   
 }
 
+handleSubmit = (event) => {
+  event.preventDefault()
+  fetch('http://localhost:3000/users')
+  .then(resp => resp.json())
+  .then(users => {
+  
+    users.map(user => {
+      if(this.state.username === user.username && this.state.password === user.password){
+        this.props.getUserObj(user)
+        this.props.history.push('/main')
+      }
+    })
+  })
+}
+
   render(){
   return (
     <div>
-        <Grid container spacing={1} alignItems="flex-end">
+        <Grid container spacing={1} justify="center" alignItems="flex-end">
             <Paper>
                 <Typography>LOGIN</Typography>
                 <br></br>
-                <form onSubmit={console.log()}>
+                <form onSubmit={this.handleSubmit}>
                 <TextField 
                 label="Username" 
                 name="username"

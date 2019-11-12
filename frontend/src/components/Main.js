@@ -104,7 +104,8 @@ export default function Main(props) {
                 </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
-                    VIEW HIGH SCORES
+                  <Link to="/scores">VIEW HIGH SCORES</Link>
+                   
                   </Button>
                 </Grid>
               </Grid>

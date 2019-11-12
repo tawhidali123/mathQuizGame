@@ -17,8 +17,18 @@ class UsersController < ApplicationController
         render json: @user
     end
 
+    def update
+        
+        @user = User.find(params[:id])
+        @user.update(username: params[:username], password: params[:password], phrase: params[:phrase])
 
+        render json: @user
+    end
 
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+    end
 
 
 
