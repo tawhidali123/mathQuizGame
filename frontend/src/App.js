@@ -9,6 +9,7 @@ import Login from './login/Login'
 import Register from './login/Register'
 import GameContainer from './components/GameContainer';
 import UserUpdate from './login/UserUpdate'
+import ViewScores from './components/ViewScores'
 
 export default class App extends React.Component {
   state= {
@@ -29,6 +30,7 @@ export default class App extends React.Component {
       <Route path="/main" render={(routerProps) => <Main userObj={this.state.userObj} {...routerProps} />} /> 
       <Route path="/play" render={(routerProps) => <GameContainer userObj={this.state.userObj} {...routerProps} />} />
       <Route path="/edituser" render={(routerProps) => <UserUpdate userObj={this.state.userObj} {...routerProps} />} />
+      <Route path="/scores" render={(routerProps) => <ViewScores userObj={this.state.userObj} {...routerProps} />} />
     </Switch>
 
     </div>
