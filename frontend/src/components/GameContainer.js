@@ -6,13 +6,16 @@ import Score from './Score'
 import Timer from "./Timer"
 import Grid from '@material-ui/core/Grid';
 import { Link } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
 
-
+let interval;
 export default class GameContainer extends Component {
 
     state = {
         points: 0,
-        time: 5
+        time: 60,
+        difficulty_id: null
+        
         
     }
     
@@ -33,7 +36,7 @@ export default class GameContainer extends Component {
             body: JSON.stringify({
              user_id: this.props.userObj.id,
              points: this.state.points,
-             difficulty_id: 1
+             difficulty_id: this.state.difficulty_id
             }),
 
             headers: {
@@ -44,19 +47,52 @@ export default class GameContainer extends Component {
         .then(resp => resp.json())
     }
 
-    // componentDidMount(){
-    //     fetch('http://localhost:3000/difficulties')
-    //     .then(resp => resp.json())
-    //     .then(difficulty => {
-    //         this.setState({time: difficulty.time})
-    //     })
-    // }
+    handleDifficulty = (event) => {
+    //   event.preventDefault()
+        this.props.difficultyObj.map(difficulty => {
+        if(event.target.name === difficulty.level){
+            console.log(difficulty.time)
+            this.setState({time: difficulty.time, difficulty_id: difficulty.id})
+         
+        }})}
+
+    
+        countDown = () => {
+            this.setState({time: this.state.time-1})
+        }
+
+        startTimer = () => {
+            interval =  setInterval(() => {
+                this.countDown();
+                console.log(this.state.time);
+              }, 1000);
+            }
 
     render() {
-        console.log(this.props.userObj)
+            if(this.state.time === 0)  {
+            this.props.done()
+            clearInterval(interval)
+            return <Redirect to='/main' />
+
+            
+        } 
         return (
             <Grid justify="center">
-            <Timer time={this.state.time} done={this.isTimerDone}/>
+              
+                    
+                    
+                <button name="easy" onClick={this.handleDifficulty}>
+                    Easy
+                </button>
+                <button name="medium" onClick={this.handleDifficulty}>
+                    Medium
+                </button>
+                <button name="hard" onClick={this.handleDifficulty}>
+                    Hard
+                </button>
+                    
+             
+            <Timer time={this.state.time} done={this.isTimerDone} startTimer={this.startTimer}/>
             
                 
             <Grid container spacing={6}  justify="center" >

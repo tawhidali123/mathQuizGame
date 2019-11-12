@@ -10,8 +10,9 @@ class UserUpdate extends Component {
         username: "",
         password: "",
         phrase: "",
-        user_id: null
-
+        user_id: null,
+        // userObject: {},
+        // updatedUser: false
     }
 
     onChange = (event) => {
@@ -22,6 +23,7 @@ class UserUpdate extends Component {
     }
 
     componentDidMount(){
+        
         this.setState({
             username: this.props.userObj.username,
             password: this.props.userObj.password,
@@ -30,6 +32,7 @@ class UserUpdate extends Component {
         })
     }
     
+   
     handleSubmit = (event) => {
         event.preventDefault()
         console.log(this.state)
@@ -48,8 +51,8 @@ class UserUpdate extends Component {
         })
         .then(resp => resp.json())
         .then(user => {
-            console.log(user)
-            
+            // this.setState({userObject: user, updatedUser: true})
+            this.props.getUserObj(user)
             this.props.history.push('/main')
         })
         
