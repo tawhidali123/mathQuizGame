@@ -20,7 +20,7 @@ const DEFAULT_STATE= {
     userInput: 0,
     a: 0,
     b: 0,
-    point: 1
+    point: 2
 }
 
 

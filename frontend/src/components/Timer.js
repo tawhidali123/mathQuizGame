@@ -8,10 +8,7 @@ import { Redirect } from 'react-router-dom';
 
 export default class Timer extends Component {
 
-    state = {
-        counter: 0,
-    }
-    
+   
 
 
     
@@ -36,7 +33,7 @@ export default class Timer extends Component {
     
     render() {
        
-        console.log(this.state.counter)
+       
 
         return (
             <div>

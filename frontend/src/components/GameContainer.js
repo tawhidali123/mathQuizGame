@@ -48,13 +48,16 @@ export default class GameContainer extends Component {
     }
 
     handleDifficulty = (event) => {
-    //   event.preventDefault()
+      event.preventDefault()
+    //   console.log(this.props.difficultyObj)
         this.props.difficultyObj.map(difficulty => {
         if(event.target.name === difficulty.level){
             console.log(difficulty.time)
             this.setState({time: difficulty.time, difficulty_id: difficulty.id})
          
-        }})}
+        }})
+    }
+
 
     
         countDown = () => {
@@ -70,7 +73,8 @@ export default class GameContainer extends Component {
 
     render() {
             if(this.state.time === 0)  {
-            this.props.done()
+                console.log(this.state.points)
+            this.isTimerDone()
             clearInterval(interval)
             return <Redirect to='/main' />
 

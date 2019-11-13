@@ -8,7 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 // import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
@@ -71,7 +72,12 @@ handleSubmit = (event) => {
                 </form>
                 
             </Paper>
+           
+            
         </Grid>
+        <Button >
+            <Link to="/register">New User?</Link>
+            </Button>
       </div>
   );
 }

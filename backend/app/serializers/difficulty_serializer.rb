@@ -1,4 +1,4 @@
 class DifficultySerializer < ActiveModel::Serializer
-  attributes :id, :level, :time
-  has_many :scores
+  attributes :id, :level, :time, :scores
+  # has_many :scores
 end

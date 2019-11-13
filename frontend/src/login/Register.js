@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography';
 // import AccountCircle from '@material-ui/icons/AccountCircle';
+import { Redirect, Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -91,7 +93,13 @@ export default class Register extends React.Component {
                 <input type="submit"/>
                 </form>
             </Paper>
+            
+            
         </Grid>
+        
+        <Button>
+            <Link to="/">Login</Link>
+            </Button>
     </div>
   );
 }

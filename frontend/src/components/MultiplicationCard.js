@@ -20,7 +20,7 @@ const DEFAULT_STATE= {
     userInput: 0,
     a: 0,
     b: 0,
-    point: 2
+    point: 1
 }
 
 
@@ -40,7 +40,7 @@ export default class MultiplicationCard extends React.Component {
     // }
     mathProblem = () => {
     let random = () => {   
-        return Math.round(Math.random()* 10)+1 
+        return Math.round(Math.random()* 10)+2 
     }
 
     let a = random()
