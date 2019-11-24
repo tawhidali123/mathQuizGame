@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
+import Button from '@material-ui/core/Button';
+import { Redirect } from 'react-router-dom';
 
 // const DEFAULT_STATE = {
 //     counter: 60
 // }
-let interval;
+
 export default class Timer extends Component {
 
-    state = {
-        counter: 60
-    }
-    
+   
 
 
     
@@ -27,36 +26,22 @@ export default class Timer extends Component {
     //     this.startTimer()
     // }
 
-    countDown = () => {
-        this.setState({counter: this.state.counter-1})
-    }
     
+   
     
-    componentDidMount(){
-        interval =  setInterval(() => {
-            this.countDown();
-            console.log(this.state.counter);
-          }, 1000);
-    }
 
-    componentDidUpdate(){
-        if(this.state.counter === 0)  {
-            clearInterval(interval)
-        } 
-    }
-
-
-
-       
-
-
+    
     render() {
-     
+       
+       
 
         return (
             <div>
                <h1>
-                    Timer: {this.state.counter}
+                   <Button onClick={this.props.startTimer} >Start</Button>
+                   
+                   <br></br>
+                    Timer: {this.props.time}
                     
                </h1> 
             </div>

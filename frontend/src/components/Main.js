@@ -16,6 +16,7 @@ import Container from '@material-ui/core/Container';
 // import Link from '@material-ui/core/Link';
 // import AdditionCard from './AdditionCard';
 import GameContainer from './GameContainer';
+import { Link } from 'react-router-dom';
 // END MATERIAL UI IMPORTS
 
 
@@ -53,8 +54,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function Main() {
+export default function Main(props) {
   const classes = useStyles();
+
+
 
   return (
     <React.Fragment>
@@ -68,6 +71,11 @@ export default function Main() {
           </Typography>
           {/* <Button variant="contained" color="primary"> Main Menu </Button> */}
           <Button variant="contained" color="primary"> Logout </Button>
+          
+          <Button variant="contained" color="blue">
+          <Link to="/edituser">Edit Profile</Link>
+          
+          </Button>
           
         </Toolbar>
       </AppBar>
@@ -87,13 +95,17 @@ export default function Main() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary" >
-                    PLAY GAME
+                  <Button 
+                  variant="contained" 
+                  color="secondary"
+                   >
+                    <Link to="/play">PLAY GAME</Link>
                   </Button>
                 </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
-                    VIEW HIGH SCORES
+                  <Link to="/scores">VIEW HIGH SCORES</Link>
+                   
                   </Button>
                 </Grid>
               </Grid>
@@ -102,9 +114,6 @@ export default function Main() {
         </div>
         {/* END TITLE SECTION */}
 
-        <Grid>
-            <GameContainer/>
-        </Grid>
 
       </main>
     
