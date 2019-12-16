@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 class ViewScores extends Component {
 
@@ -56,6 +58,8 @@ class ViewScores extends Component {
     
 
     render() {
+
+        
         console.log(this.state.search)
         return (
             <div>
@@ -68,7 +72,10 @@ class ViewScores extends Component {
                 onKeyPress= {this.keyPress}
                 />
                 <br></br>
-                <Typography color='textPrimary' variant="h2">High Scores</Typography>
+                <Button >
+            <Link to="/main">Main Page</Link>
+            </Button>
+                <Typography color='textPrimary' variant="h3">High Scores</Typography>
                 
                     {this.state.search.map(search => {
                     if(search.difficulty_id === 1){
@@ -78,24 +85,25 @@ class ViewScores extends Component {
                       } else if(search.difficulty_id === 3){
                         search.difficulty_id = "Hard"
                       }
-                return <ul> 
-                    <Typography variant="h5" color="primary">
+                return <Grid> 
+                    <Typography variant="h5" color="textPrimary">
                     Difficulty:
                     </Typography>
                     {search.difficulty_id } 
-                    <Typography variant="h5" color="primary">
+                    <Typography variant="h5" color="textPrimary">
                     Score:
                     </Typography>
                     { search.points }
-                    <Typography variant="h5" color="primary">
+                    <Typography variant="h5" color="textPrimary">
                     Player:
                     </Typography>
+
                     {this.state.users.map(user => {
                         if(user.id === search.user_id){
                             return <div>{user.username}</div>
                         } 
                     })}
-                    </ul>})}
+                    </Grid>})}
                 </Grid>
             </div>
         );

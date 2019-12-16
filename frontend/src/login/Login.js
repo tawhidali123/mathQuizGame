@@ -61,6 +61,7 @@ handleSubmit = (event) => {
                 <br></br>
                 <TextField
                 id="standard-password-input"
+                label="Password"
                 name="password"
                 type="password"
                 margin="normal"
