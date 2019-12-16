@@ -10,8 +10,14 @@ class UserUpdate extends Component {
         username: "",
         password: "",
         phrase: "",
+<<<<<<< HEAD
         user_id: null
 
+=======
+        user_id: null,
+        // userObject: {},
+        // updatedUser: false
+>>>>>>> refs/remotes/origin/tawhid
     }
 
     onChange = (event) => {
@@ -22,6 +28,10 @@ class UserUpdate extends Component {
     }
 
     componentDidMount(){
+<<<<<<< HEAD
+=======
+        
+>>>>>>> refs/remotes/origin/tawhid
         this.setState({
             username: this.props.userObj.username,
             password: this.props.userObj.password,
@@ -29,8 +39,13 @@ class UserUpdate extends Component {
             user_id: this.props.userObj.id
         })
     }
+<<<<<<< HEAD
 
     
+=======
+    
+   
+>>>>>>> refs/remotes/origin/tawhid
     handleSubmit = (event) => {
         event.preventDefault()
         console.log(this.state)
@@ -49,7 +64,11 @@ class UserUpdate extends Component {
         })
         .then(resp => resp.json())
         .then(user => {
+<<<<<<< HEAD
             console.log(user)
+=======
+            // this.setState({userObject: user, updatedUser: true})
+>>>>>>> refs/remotes/origin/tawhid
             this.props.getUserObj(user)
             this.props.history.push('/main')
         })
@@ -70,6 +89,7 @@ class UserUpdate extends Component {
         <Grid container spacing={1} justify="center" alignItems="flex-end">
             <Paper>
                 <form onSubmit={this.handleSubmit}>
+<<<<<<< HEAD
 
                     <Typography>Edit Info</Typography>
                     <br></br>
@@ -100,6 +120,37 @@ class UserUpdate extends Component {
 
                     <button onClick={this.handleDelete}>
                         Delete Account
+=======
+                <Typography>Edit Info</Typography>
+                <br></br>
+                <TextField 
+                label="New Username"
+                name="username"
+                value={this.state.username}
+                
+                />
+                <br></br>
+                <TextField
+                id="standard-password-input"
+                label="New Password"
+                type="password"
+                name="password"
+                margin="normal"
+                onChange={this.onChange}
+                value={this.state.password}
+                />
+                <br></br>
+                <TextField
+                label="New Catch Phrase"
+                name="phrase"
+                onChange={this.onChange}
+                value={this.state.phrase}
+                />
+                <br></br>
+                <input type="submit"/>
+                <button onClick={this.handleDelete}>
+                    Delete Account
+>>>>>>> refs/remotes/origin/tawhid
                     </button>
                 </form>
 

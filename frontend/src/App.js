@@ -9,11 +9,20 @@ import Login from './login/Login'
 import Register from './login/Register'
 import GameContainer from './components/GameContainer';
 import UserUpdate from './login/UserUpdate'
+<<<<<<< HEAD
 import ViewScores from "./components/ViewScores"
 
 export default class App extends React.Component {
   state= {
     userObj: {}
+=======
+import ViewScores from './components/ViewScores'
+
+export default class App extends React.Component {
+  state= {
+    userObj: {},
+    difficultyObj: []
+>>>>>>> refs/remotes/origin/tawhid
   }
 
   getUserObj = (obj) => {
@@ -21,6 +30,23 @@ export default class App extends React.Component {
     this.setState({userObj: obj})
   }
 
+<<<<<<< HEAD
+=======
+  componentDidMount(){
+    fetch('http://localhost:3000/difficulties')
+    .then(resp => resp.json())
+    .then(difficulty => {
+        
+        this.setState({difficultyObj: difficulty})
+    })
+}
+
+getDifficultyObj = () => {
+  let newObj = [...this.state.difficultyObj].reverse()
+  this.setState({difficultyObj: newObj})
+}
+
+>>>>>>> refs/remotes/origin/tawhid
   render(){
   return (
     <div className="App">
@@ -28,12 +54,22 @@ export default class App extends React.Component {
       <Route exact path="/" render={(routerProps) => <Login getUserObj={this.getUserObj} {...routerProps} />} />
       <Route path="/register" render={(routerProps) => <Register getUserObj={this.getUserObj} {...routerProps} />}/>
       <Route path="/main" render={(routerProps) => <Main userObj={this.state.userObj} {...routerProps} />} /> 
+<<<<<<< HEAD
       <Route path="/play" render={(routerProps) => <GameContainer userObj={this.state.userObj} {...routerProps} />} />
       <Route path="/edituser" render={(routerProps) => <UserUpdate userObj={this.state.userObj} getUserObj={this.getUserObj} {...routerProps} />} />
       <Route path="/viewscores" render={(routerProps) => <ViewScores userObj={this.state.userObj} {...routerProps} />} />
+=======
+      <Route path="/play" render={(routerProps) => <GameContainer userObj={this.state.userObj} difficultyObj={this.state.difficultyObj} getDifficultyObj={this.getDifficultyObj} {...routerProps} />} />
+      <Route path="/edituser" render={(routerProps) => <UserUpdate userObj={this.state.userObj} getUserObj={this.getUserObj} {...routerProps} />} />
+      <Route path="/scores" render={(routerProps) => <ViewScores userObj={this.state.userObj} {...routerProps} />} />
+>>>>>>> refs/remotes/origin/tawhid
     </Switch>
 
     </div>
   );
 }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/origin/tawhid

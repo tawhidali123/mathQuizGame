@@ -5,14 +5,18 @@ import { Redirect } from 'react-router-dom';
 // const DEFAULT_STATE = {
 //     counter: 60
 // }
-let interval;
+
 export default class Timer extends Component {
 
+<<<<<<< HEAD
     state = {
         counter: null,
         toMain: false
     }
     
+=======
+   
+>>>>>>> refs/remotes/origin/tawhid
 
 
     
@@ -30,16 +34,8 @@ export default class Timer extends Component {
     //     this.startTimer()
     // }
 
-    countDown = () => {
-        this.setState({counter: this.state.counter-1})
-    }
-    startTimer = () => {
-    interval =  setInterval(() => {
-        this.countDown();
-        console.log(this.state.counter);
-      }, 1000);
-    }
     
+<<<<<<< HEAD
     componentDidMount(){
     this.setState({counter: this.props.time})
     }
@@ -55,14 +51,23 @@ export default class Timer extends Component {
             
         } 
      
+=======
+   
+    
+
+    
+    render() {
+       
+       
+>>>>>>> refs/remotes/origin/tawhid
 
         return (
             <div>
                <h1>
-                   <Button onClick={this.startTimer} >Start</Button>
+                   <Button onClick={this.props.startTimer} >Start</Button>
                    
                    <br></br>
-                    Timer: {this.state.counter}
+                    Timer: {this.props.time}
                     
                </h1> 
             </div>

@@ -16,7 +16,12 @@ class UsersController < ApplicationController
         render json: @user
     end
 
+    def update
+        
+        @user = User.find(params[:id])
+        @user.update(username: params[:username], password: params[:password], phrase: params[:phrase])
 
+<<<<<<< HEAD
     def update
         
         @user = User.find(params[:id])
@@ -30,7 +35,15 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user.destroy
     end
+=======
+        render json: @user
+    end
+>>>>>>> refs/remotes/origin/tawhid
 
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+    end
 
 
 
