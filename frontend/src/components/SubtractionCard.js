@@ -59,6 +59,7 @@ export default class MultiplicationCard extends React.Component {
         b: b
     })
     }
+    
     componentDidMount(){
         // console.log('hey')
         this.mathProblem()

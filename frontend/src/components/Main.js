@@ -104,7 +104,7 @@ export default function Main(props) {
                 </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
-                    VIEW HIGH SCORES
+                    <Link to="/viewscores">View Scores</Link>
                   </Button>
                 </Grid>
               </Grid>
@@ -113,17 +113,9 @@ export default function Main(props) {
         </div>
         {/* END TITLE SECTION */}
 
-        {/* <Grid>
-            <GameContainer/>
-<<<<<<< HEAD:frontend/src/components/Main.js
-        </Grid> */}
-=======
-        </Grid>
->>>>>>> tawhid:frontend/src/components/Main.js
 
       </main>
     
     </React.Fragment>
   );
 }
-

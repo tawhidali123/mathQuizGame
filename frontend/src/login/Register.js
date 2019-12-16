@@ -18,7 +18,7 @@ export default class Register extends React.Component {
         username: "",
         password: "",
         phrase: "",
-        userObj: {}
+       
       }
     
       onChange = (event) => {
@@ -45,7 +45,9 @@ export default class Register extends React.Component {
         })
         .then(resp => resp.json())
         .then(user => {
-
+            console.log(user)
+            this.props.getUserObj(user)
+            this.props.history.push('/main')
         })
         
     }
@@ -60,33 +62,33 @@ export default class Register extends React.Component {
         <Grid container spacing={1} justify="center" alignItems="flex-end">
             <Paper>
                 <form onSubmit={this.handleSubmit}>
-                <Typography>Register</Typography>
-                <br></br>
-                <TextField 
-                label="Username" 
-                name="username"
-                onChange={this.onChange}
-                value={this.state.username}
-                />
-                <br></br>
-                <TextField
-                id="standard-password-input"
-                label="Password"
-                type="password"
-                name="password"
-                margin="normal"
-                onChange={this.onChange}
-                value={this.state.password}
-                />
-                <br></br>
-                <TextField
-                label="Catch Phrase"
-                name="phrase"
-                onChange={this.onChange}
-                value={this.state.phrase}
-                />
-                <br></br>
-                <input type="submit"/>
+                  <Typography>Register</Typography>
+                  <br></br>
+                  <TextField 
+                  label="Username" 
+                  name="username"
+                  onChange={this.onChange}
+                  value={this.state.username}
+                  />
+                  <br></br>
+                  <TextField
+                  id="standard-password-input"
+                  label="Password"
+                  type="password"
+                  name="password"
+                  margin="normal"
+                  onChange={this.onChange}
+                  value={this.state.password}
+                  />
+                  <br></br>
+                  <TextField
+                  label="Catch Phrase"
+                  name="phrase"
+                  onChange={this.onChange}
+                  value={this.state.phrase}
+                  />
+                  <br></br>
+                  <input type="submit"/>
                 </form>
             </Paper>
         </Grid>

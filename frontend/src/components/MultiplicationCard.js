@@ -112,7 +112,7 @@ export default class MultiplicationCard extends React.Component {
                             onChange= {this.handleChange}
                             onKeyPress= {this.keyPress}
                             />
-                            </Typography>
+                        </Typography>
                       
                     </CardActions>
                 </Card>

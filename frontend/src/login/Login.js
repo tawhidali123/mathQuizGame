@@ -16,10 +16,10 @@ export default class Login extends React.Component {
   state={
     username: "",
     password: "",
-    user_id: 0
+    
   }
 
-<<<<<<< HEAD:frontend/src/login/Login.js
+
   onChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
@@ -27,12 +27,21 @@ export default class Login extends React.Component {
   
 }
 
-=======
-export default function Login() {
-  const classes = useStyles();
->>>>>>> tawhid:frontend/src/login/Login.js
+handleSubmit = (event) => {
+  event.preventDefault()
+  fetch('http://localhost:3000/users')
+  .then(resp => resp.json())
+  .then(users => {
+  
+    users.map(user => {
+      if(this.state.username === user.username && this.state.password === user.password){
+        this.props.getUserObj(user)
+        this.props.history.push('/main')
+      }
+    })
+  })
+}
 
- 
   render(){
   return (
     <div>
@@ -40,24 +49,24 @@ export default function Login() {
             <Paper>
                 <Typography>LOGIN</Typography>
                 <br></br>
-                <form onSubmit={console.log()}>
-                <TextField 
-                label="Username" 
-                name="username"
-                value={this.state.username}
-                onChange={this.onChange}
-                />
-                <br></br>
-                <TextField
-                id="standard-password-input"
-                name="password"
-                type="password"
-                margin="normal"
-                onChange={this.onChange}
-                value={this.state.password}
-                />
-                <br></br>
-                <input type="submit"/>
+                <form onSubmit={this.handleSubmit}>
+                  <TextField 
+                  label="Username" 
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.onChange}
+                  />
+                  <br></br>
+                  <TextField
+                  id="standard-password-input"
+                  name="password"
+                  type="password"
+                  margin="normal"
+                  onChange={this.onChange}
+                  value={this.state.password}
+                  />
+                  <br></br>
+                  <input type="submit"/>
                 </form>
                 
             </Paper>
