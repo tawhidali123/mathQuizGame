@@ -7,6 +7,8 @@ import Timer from "./Timer"
 import Grid from '@material-ui/core/Grid';
 import { Link } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
+import {Animated} from "react-animated-css"
+import Button from '@material-ui/core/Button';
 
 let interval;
 export default class GameContainer extends Component {
@@ -14,8 +16,9 @@ export default class GameContainer extends Component {
     state = {
         points: 0,
         time: 60,
-        difficulty_id: null
-        
+        difficulty_id: null,
+        pointArr: [],
+        ongoing: false
         
     }
     
@@ -24,7 +27,8 @@ export default class GameContainer extends Component {
         let newPoint = this.state.points
         let finalPoint = point + newPoint 
         this.setState({
-            points: finalPoint
+            points: finalPoint,
+            pointArr: [finalPoint]
         })
         
         
@@ -45,16 +49,20 @@ export default class GameContainer extends Component {
             }
         })
         .then(resp => resp.json())
+        .then(this.setState({ongoing: false}))
     }
 
     handleDifficulty = (event) => {
-    //   event.preventDefault()
+      event.preventDefault()
+      console.log(event.target.name)
         this.props.difficultyObj.map(difficulty => {
-        if(event.target.name === difficulty.level){
-            console.log(difficulty.time)
+        if(event.target.name == difficulty.level){
+            // console.log(difficulty.time)
             this.setState({time: difficulty.time, difficulty_id: difficulty.id})
          
-        }})}
+        }})
+    }
+
 
     
         countDown = () => {
@@ -66,22 +74,45 @@ export default class GameContainer extends Component {
                 this.countDown();
                 console.log(this.state.time);
               }, 1000);
+              this.setState({ongoing: true})
             }
 
+
+
+        handleReverse = () => {
+           this.props.getDifficultyObj()
+           
+            
+        }
+
+
+
     render() {
+        console.log(this.props.difficultyObj)
+
             if(this.state.time === 0)  {
-            this.props.done()
+                console.log(this.state.points)
+            this.isTimerDone()
             clearInterval(interval)
             return <Redirect to='/main' />
 
             
         } 
+
         return (
-            <Grid justify="center">
+            <Grid id="henrykim" justify="center">
               
-                    
-                    
-                <button name="easy" onClick={this.handleDifficulty}>
+               {this.props.difficultyObj.map(difficulty => {
+                   return <button name={difficulty.level} onClick={this.handleDifficulty}>{difficulty.level}</button>
+               })}     
+
+                <button onClick={this.handleReverse}> Reverse</button>
+                
+                
+                
+                
+                
+                {/* <button name="easy" onClick={this.handleDifficulty}>
                     Easy
                 </button>
                 <button name="medium" onClick={this.handleDifficulty}>
@@ -90,11 +121,15 @@ export default class GameContainer extends Component {
                 <button name="hard" onClick={this.handleDifficulty}>
                     Hard
                 </button>
-                    
+                     */}
+                    <h1>
+             <Button onClick={this.startTimer} >Start</Button>
+             <br></br>
              
-            <Timer time={this.state.time} done={this.isTimerDone} startTimer={this.startTimer}/>
-            
-                
+            Timer: {this.state.time}
+            </h1>
+                {this.state.ongoing ? 
+               
             <Grid container spacing={6}  justify="center" >
                 
                 
@@ -108,9 +143,15 @@ export default class GameContainer extends Component {
                 <SubtractionCard correct = {this.correctAnswer}/>
                 </Grid>
                 
+            </Grid >
+                :
+                <h2 className="gamecolor">Press Start</h2> 
+
+                }
+                <Score total = {this.state.points}/>
+            
             </Grid>
-            <Score total = {this.state.points}/>
-            </Grid>
+        
         )
     }
 }
