@@ -28,16 +28,7 @@ export default class AdditionCard extends React.Component {
 
    state ={...DEFAULT_STATE}
 
-    // newSum = () => {
-    //     
-    // }
-    
-
-    // getSum = (sum) => {
-    //     this.setState({
-    //         sum: sum
-    //     })
-    // }
+   
     mathProblem = () => {
     let random = () => {   
         return Math.round(Math.random()* 100) 
@@ -54,24 +45,8 @@ export default class AdditionCard extends React.Component {
     })
     }
     componentDidMount(){
-        // console.log('hey')
-        this.mathProblem()
-        
+        this.mathProblem()   
     }
-
-    // componentDidUpdate(){
-
-    // }
-      
-    
-    
-    // componentWillMount(){
-    //     this.setState({
-    //         sum: newSum
-    //         })
-            
-        
-    // }
     handleChange = (event) => {
         this.setState({
             userInput: event.target.value
@@ -109,7 +84,9 @@ export default class AdditionCard extends React.Component {
                         <h1>{this.state.a} + {this.state.b}</h1>
                         </Typography>
                     </CardContent>
-                    
+                    <CardContent>
+                        <Typography>1 Point</Typography>
+                    </CardContent>
                     <CardActions>
                         <Typography>
                             <input 

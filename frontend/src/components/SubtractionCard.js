@@ -118,6 +118,9 @@ export default class MultiplicationCard extends React.Component {
                     <h1>{this.showProblem()}</h1>
                     </Typography>
                     </CardContent>
+                    <CardContent>
+                        <Typography>2 Points</Typography>
+                    </CardContent>
                     <CardActions>
                         <Typography>
                         <input 

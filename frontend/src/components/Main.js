@@ -70,7 +70,9 @@ export default function Main(props) {
             NAV BAR
           </Typography>
           {/* <Button variant="contained" color="primary"> Main Menu </Button> */}
-          <Button variant="contained" color="primary"> Logout </Button>
+          <Button variant="contained" color="primary">  
+            <Link to="/">LogOut</Link>
+             </Button>
           
           <Button variant="contained" color="blue">
           <Link to="/edituser">Edit Profile</Link>

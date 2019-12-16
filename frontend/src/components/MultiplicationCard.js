@@ -20,7 +20,7 @@ const DEFAULT_STATE= {
     userInput: 0,
     a: 0,
     b: 0,
-    point: 1
+    point: 2
 }
 
 
@@ -40,7 +40,7 @@ export default class MultiplicationCard extends React.Component {
     // }
     mathProblem = () => {
     let random = () => {   
-        return Math.round(Math.random()* 10)+2 
+        return Math.round(Math.random()* 10)+3 
     }
 
     let a = random()
@@ -54,24 +54,11 @@ export default class MultiplicationCard extends React.Component {
     })
     }
     componentDidMount(){
-        // console.log('hey')
         this.mathProblem()
         
     }
 
-    // componentDidUpdate(){
-
-    // }
-      
-    
-    
-    // componentWillMount(){
-    //     this.setState({
-    //         sum: newSum
-    //         })
-            
-        
-    // }
+   
     handleChange = (event) => {
         this.setState({
             userInput: event.target.value
@@ -105,7 +92,11 @@ export default class MultiplicationCard extends React.Component {
                     <h1>{this.state.a} * {this.state.b}</h1>
                     </Typography>
                     </CardContent>
+                    <CardContent>
+                        <Typography>2 Points</Typography>
+                    </CardContent>
                     <CardActions>
+                        
                         <Typography>
                         <input 
                             type="text"
