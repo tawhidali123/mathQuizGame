@@ -8,6 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography';
+import { Redirect, Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 // import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
@@ -16,10 +18,10 @@ export default class Login extends React.Component {
   state={
     username: "",
     password: "",
-    user_id: 0
+    
   }
 
-<<<<<<< HEAD:frontend/src/login/Login.js
+
   onChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
@@ -27,20 +29,29 @@ export default class Login extends React.Component {
   
 }
 
-=======
-export default function Login() {
-  const classes = useStyles();
->>>>>>> tawhid:frontend/src/login/Login.js
+handleSubmit = (event) => {
+  event.preventDefault()
+  fetch('http://localhost:3000/users')
+  .then(resp => resp.json())
+  .then(users => {
+  
+    users.map(user => {
+      if(this.state.username === user.username && this.state.password === user.password){
+        this.props.getUserObj(user)
+        this.props.history.push('/main')
+      }
+    })
+  })
+}
 
- 
   render(){
   return (
     <div>
-        <Grid container spacing={1} alignItems="flex-end">
+        <Grid container spacing={1} justify="center" alignItems="flex-end">
             <Paper>
                 <Typography>LOGIN</Typography>
                 <br></br>
-                <form onSubmit={console.log()}>
+                <form onSubmit={this.handleSubmit}>
                 <TextField 
                 label="Username" 
                 name="username"
@@ -50,6 +61,7 @@ export default function Login() {
                 <br></br>
                 <TextField
                 id="standard-password-input"
+                label="Password"
                 name="password"
                 type="password"
                 margin="normal"
@@ -61,7 +73,12 @@ export default function Login() {
                 </form>
                 
             </Paper>
+           
+            
         </Grid>
+        <Button >
+            <Link to="/register">New User?</Link>
+            </Button>
       </div>
   );
 }

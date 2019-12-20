@@ -20,7 +20,7 @@ const DEFAULT_STATE= {
     userInput: 0,
     a: 0,
     b: 0,
-    point: 1
+    point: 2
 }
 
 
@@ -117,6 +117,9 @@ export default class MultiplicationCard extends React.Component {
                     <Typography gutterBottom variant="h5" component="h2">
                     <h1>{this.showProblem()}</h1>
                     </Typography>
+                    </CardContent>
+                    <CardContent>
+                        <Typography>2 Points</Typography>
                     </CardContent>
                     <CardActions>
                         <Typography>
